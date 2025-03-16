@@ -1,3 +1,5 @@
+
+
 const images = [
       {
         preview:
@@ -65,8 +67,15 @@ const images = [
     ];
     
     const container = document.querySelector(".gallery");
+    console.log("📌 Проверка container:", container);
     
+    if (!container) {
+      console.error(".gallery has not been defined");
+    
+  } 
 
+  console.log(".gallery has been defined in DOM");
+  
     const galleryMarkup = images
     .map(({preview, original, description}) => `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
@@ -89,7 +98,7 @@ container.addEventListener("click", showImage);
 
 function showImage(event){
     event.preventDefault();
-    if(event.target.nodeName!=="IMG") return;
+    if(event.target.nodeName !== "IMG") return;
     const original = event.target.dataset.source;
     const description = event.target.alt;
     console.log (original);
@@ -102,6 +111,7 @@ function showImage(event){
     />
     </div>
         `)
+       
         modalWindow.show()
 }
 
